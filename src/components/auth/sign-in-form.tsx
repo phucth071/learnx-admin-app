@@ -82,7 +82,7 @@ export function SignInForm(): React.JSX.Element {
       <Typography variant="h4">Login as admin</Typography>
       {/*<Stack spacing={1}>*/}
       {/*  <Typography color="text.secondary" variant="body2">*/}
-      {/*    Don&apos;t have an account?{' '}*/}
+      {/*    Don&apos;t have an profile?{' '}*/}
       {/*    <Link component={RouterLink} href={paths.auth.signUp} underline="hover" variant="subtitle2">*/}
       {/*      Sign up*/}
       {/*    </Link>*/}
