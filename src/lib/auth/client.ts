@@ -1,7 +1,7 @@
 
 import axios from '@/axios/axios';
 import Cookies from 'js-cookie';
-import { BaseResponse } from '@/types/baseResponse';
+import { BaseResponse } from '@/types/base-response';
 import { logger } from '@/lib/default-logger';
 import { User } from '@/types/user';
 

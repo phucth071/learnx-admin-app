@@ -14,7 +14,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-import dayjs from 'dayjs';
+// import dayjs from 'dayjs';
 
 import { useSelection } from '@/hooks/use-selection';
 
@@ -22,31 +22,33 @@ function noop(): void {
   // do nothing
 }
 
-export interface Customer {
+export interface Account {
   id: string;
-  avatar: string;
-  name: string;
+  avatarUrl: string;
+  fullName: string;
   email: string;
-  address: { city: string; state: string; country: string; street: string };
-  phone: string;
-  createdAt: Date;
+  role: string;
 }
 
-interface CustomersTableProps {
+interface AccountsTableProps {
   count?: number;
   page?: number;
-  rows?: Customer[];
+  rows?: Account[];
   rowsPerPage?: number;
+  onPageChange?: (event: unknown, newPage: number) => void;
+  onRowsPerPageChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function CustomersTable({
+export function AccountsTable({
   count = 0,
   rows = [],
   page = 0,
   rowsPerPage = 0,
-}: CustomersTableProps): React.JSX.Element {
+  onPageChange = noop,
+  onRowsPerPageChange = noop,
+}: AccountsTableProps): React.JSX.Element {
   const rowIds = React.useMemo(() => {
-    return rows.map((customer) => customer.id);
+    return rows.map((account) => account.id);
   }, [rows]);
 
   const { selectAll, deselectAll, selectOne, deselectOne, selected } = useSelection(rowIds);
@@ -73,11 +75,9 @@ export function CustomersTable({
                   }}
                 />
               </TableCell>
-              <TableCell>Name</TableCell>
+              <TableCell>Full Name</TableCell>
               <TableCell>Email</TableCell>
-              <TableCell>Location</TableCell>
-              <TableCell>Phone</TableCell>
-              <TableCell>Signed Up</TableCell>
+              <TableCell>Role</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -100,16 +100,15 @@ export function CustomersTable({
                   </TableCell>
                   <TableCell>
                     <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}>
-                      <Avatar src={row.avatar} />
-                      <Typography variant="subtitle2">{row.name}</Typography>
+                      <Avatar src={row.avatarUrl} />
+                      <Typography variant="subtitle2">{row.fullName}</Typography>
                     </Stack>
                   </TableCell>
                   <TableCell>{row.email}</TableCell>
                   <TableCell>
-                    {row.address.city}, {row.address.state}, {row.address.country}
+                    {row.role}
                   </TableCell>
-                  <TableCell>{row.phone}</TableCell>
-                  <TableCell>{dayjs(row.createdAt).format('MMM D, YYYY')}</TableCell>
+                  {/*<TableCell>{dayjs(row.createdAt).format('MMM D, YYYY')}</TableCell>*/}
                 </TableRow>
               );
             })}
@@ -120,8 +119,8 @@ export function CustomersTable({
       <TablePagination
         component="div"
         count={count}
-        onPageChange={noop}
-        onRowsPerPageChange={noop}
+        onPageChange={onPageChange}
+        onRowsPerPageChange={onRowsPerPageChange}
         page={page}
         rowsPerPage={rowsPerPage}
         rowsPerPageOptions={[5, 10, 25]}
