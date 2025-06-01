@@ -2,10 +2,22 @@ import type { NavItemConfig } from '@/types/nav';
 import { paths } from '@/paths';
 
 export const navItems = [
-  { key: 'overview', title: 'Overview', href: paths.dashboard.overview, icon: 'chart-pie' },
-  { key: 'accounts', title: 'Accounts', href: paths.dashboard.customers, icon: 'users' },
-  { key: 'integrations', title: 'Integrations', href: paths.dashboard.integrations, icon: 'plugs-connected' },
-  { key: 'settings', title: 'Settings', href: paths.dashboard.settings, icon: 'gear-six' },
-  { key: 'account', title: 'Account', href: paths.dashboard.account, icon: 'user' },
-  { key: 'error', title: 'Error', href: paths.errors.notFound, icon: 'x-square' },
+  {
+    key: 'accounts',
+    title: 'Quản lý tài khoản',
+    href: paths.dashboard.accounts,
+    icon: 'users',
+  },
+  {
+    key: 'permissions',
+    title: 'Quản lý cấp quyền',
+    href: paths.dashboard.permissions,
+    icon: 'users',
+  },
+  {
+    key: 'profile',
+    title: 'Hồ sơ',
+    href: paths.dashboard.profile,
+    icon: 'user',
+  }
 ] satisfies NavItemConfig[];

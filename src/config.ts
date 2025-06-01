@@ -8,7 +8,7 @@ export interface Config {
 
 export const config: Config = {
   site: {
-    name: 'UTEz', // Update the site name here
+    name: 'Learn-X', // Update the site name here
     description: '',
     themeColor: '#090a0b',
     url: getSiteURL(),

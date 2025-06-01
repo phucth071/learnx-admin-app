@@ -58,8 +58,8 @@ class AuthClient {
         role,
       };
 
-      Cookies.set('access_token', accessToken);
-      Cookies.set('refresh_token', refreshToken);
+      localStorage.setItem('access_token', accessToken);
+      localStorage.setItem('refresh_token', refreshToken);
       localStorage.setItem('logged_user', JSON.stringify(user));
       logger.debug('User logged in: ', user);
       return { data: user };
