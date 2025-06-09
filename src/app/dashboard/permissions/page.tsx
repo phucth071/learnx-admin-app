@@ -84,7 +84,7 @@ export default function Page(): React.JSX.Element {
           setRoleRequests(response.data.data);
         }
       } catch (error) {
-        console.error('Error fetching role requests:', error);
+        // Handle error appropriately
       } finally {
         setLoading(false);
       }
@@ -107,7 +107,7 @@ export default function Page(): React.JSX.Element {
         )
       );
     } catch (error) {
-      console.error('Error approving request:', error);
+      // Handle error appropriately
     }
   };
 
@@ -123,7 +123,7 @@ export default function Page(): React.JSX.Element {
         )
       );
     } catch (error) {
-      console.error('Error rejecting request:', error);
+      // 
     }
   };
 
